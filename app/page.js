@@ -40,7 +40,7 @@ export default function Home() {
     if (docSnap.exists()) {
       const { quantity, price: existingPrice } = docSnap.data();
       // Maintain the existing price if it's already set
-      await setDoc(docRef, { quantity: quantity + 1, price: existingPrice + numericPrice });
+      await setDoc(docRef, { quantity: quantity + 1, price: existingPrice || numericPrice });
     } else {
       await setDoc(docRef, { quantity: 1, price: numericPrice });
     }
